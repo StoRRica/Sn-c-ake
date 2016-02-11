@@ -57,7 +57,7 @@ public class AddPortal : MonoBehaviour {
             if (input)
             {
                 GameObject obj = (GameObject)Instantiate(backgroundIn, pos, Quaternion.identity);
-                obj.AddComponent<RemovePortal>();
+               // obj.AddComponent<RemovePortal>();
                 obj.AddComponent<PortalId>();
                 obj.GetComponent<Renderer>().material.color = portalColor;
                 //obj.GetComponent<Renderer>().material.mainTexture = inPortal;
@@ -72,7 +72,7 @@ public class AddPortal : MonoBehaviour {
             else
             {
                 currentOutputPortal = (GameObject)Instantiate(backgroundOut, pos, Quaternion.identity);
-                currentOutputPortal.AddComponent<RemovePortal>();
+                //currentOutputPortal.AddComponent<RemovePortal>();
                 currentOutputPortal.AddComponent<PortalId>();
                 currentOutputPortal.GetComponent<Renderer>().material.color = portalColor;
                 currentOutputPortal.GetComponent<SpriteRenderer>().sprite = inPortal;

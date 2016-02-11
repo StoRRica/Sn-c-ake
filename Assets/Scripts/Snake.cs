@@ -65,7 +65,8 @@ public class Snake : MonoBehaviour
     private int nextLevel = 1;
     private GameObject finalPortalGO;
     private List<GameObject> obstaclesGO = new List<GameObject>();
-
+    private GameObject foodGO;
+        
 
     bool[][] obstacle = new bool[numOfRows][]; /*12*20*/
                                                // Use this for initialization
@@ -120,7 +121,7 @@ public class Snake : MonoBehaviour
     {
         if (!pause)
         {
-            if (tail.Count == desiredLengthOfSnake) {
+            if (tail.Count >= desiredLengthOfSnake) {
                 if (!finalPortalOpen) {
                     //otvorit vstupny portal jeden 
                     finalPortalOpen = true;
@@ -268,8 +269,9 @@ public class Snake : MonoBehaviour
         } else if (coll.name.StartsWith(finalPOrtalGameObject.name)) {
             desiredLengthOfSnake *= 2;
             SetLevel(nextLevel);
-            nextLevel = (nextLevel + 1) / 4;
-            
+            nextLevel++;
+            if (nextLevel == 4) { nextLevel = 0; }
+            finalPortalOpen = false;
         }
 
 
@@ -336,14 +338,14 @@ public class Snake : MonoBehaviour
                     tail.Add(((GameObject)Instantiate(lastTailPrefab, position, rotation)).transform);
                 }
                 else {
-                    //gameOver();
-                    tail.Last().position = currentPossition;
+                    gameOver();
+                   /* tail.Last().position = currentPossition;
                     tail.Last().rotation = transform.rotation;
                     tail.Insert(0, tail.Last());
                     tail.RemoveAt(tail.Count - 1);
                     lastPosition = tail.Last().gameObject;
                     Destroy(lastPosition);
-                    tail.RemoveAt(tail.Count - 1);
+                    tail.RemoveAt(tail.Count - 1);*/
                     
                 }
                 //tail.Insert(tail.Count - 1, ();
@@ -454,10 +456,11 @@ public class Snake : MonoBehaviour
             }
             float rand = Random.Range(4, 7);
             specialTime = rand / 0.02f;
+            foodGO = specialFoodObject;
         }
         else
         {
-            Instantiate(foodPrefab,
+            foodGO = (GameObject) Instantiate(foodPrefab,
                         new Vector2(pos.x, pos.y),
                         Quaternion.identity); // default rotation
         }
@@ -579,17 +582,21 @@ void setObstacles(JSONNode bariers)
                 case 1:
                     //todo guma
                     position.y -= 1;
+                    position.x += 4;
                     obstaclesGO.Add((GameObject)Instantiate(eraserObstacleGo, position, Quaternion.identity));
                     break;
                 case 2:
                     //todo ceruzka
                     position.x -= 0.78f;
+                    position.x += 18 ;
                     position.y -= 0.24f;
                     obstaclesGO.Add((GameObject)Instantiate(pencilObstacleGO, position, Quaternion.identity));
                     break;
                 case 3:
                     //todo mobil
                     position.x -= 0.78f;
+                    position.x += 5;
+                    position.y -= 9;
                     position.y -= 0.24f;
                     obstaclesGO.Add((GameObject)Instantiate(phoneObstacleGo, position, Quaternion.identity));
                     break;
@@ -621,10 +628,12 @@ void setObstacles(JSONNode bariers)
 public void SetLevel(int levelId)
 	{
         Destroy(finalPortalGO);
+        Destroy(foodGO);
         forgetObstacles();
 		Loading.setLastLevelId (levelId);
 		setObstacles(Loading.GetBariers(levelId));
-        setPictures(Loading.GetPictures(Loading.getLastLevelId()));
+        setPictures(Loading.GetPictures(levelId));
+        SpawnFood();
     }
     /*TODO: implement game over screen here*/
     void gameOver()
