@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 484740}
   - 212: {fileID: 21241934}
   - 61: {fileID: 6128026}
+  - 114: {fileID: 11485526}
   m_Layer: 0
   m_Name: sponky
   m_TagString: Untagged
@@ -43,6 +44,17 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 9.4, y: 9.19}
+--- !u!114 &11485526
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4029468a2338f0d4f83f814946e9b0c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21241934
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -68,7 +80,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: -8
+  m_SortingOrder: -9
   m_Sprite: {fileID: 21300000, guid: d70b1d5fbe730624b88ba3cc28be6b67, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -82,7 +94,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: m_SortingOrder
-      value: -8
+      value: -9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

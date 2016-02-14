@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 478650}
   - 212: {fileID: 21216980}
   - 61: {fileID: 6111408}
+  - 114: {fileID: 11459268}
   m_Layer: 0
   m_Name: ceruzka
   m_TagString: Untagged
@@ -43,6 +44,17 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0.07}
   serializedVersion: 2
   m_Size: {x: 9.68, y: 0.6}
+--- !u!114 &11459268
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4029468a2338f0d4f83f814946e9b0c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21216980
 SpriteRenderer:
   m_ObjectHideFlags: 1

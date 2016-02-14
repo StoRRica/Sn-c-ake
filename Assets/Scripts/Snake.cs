@@ -24,6 +24,7 @@ public class Snake : MonoBehaviour
     public Canvas gameOverScreen;
     public Text scoreText;
     public Text gameOverScoreText;
+    public Text snakeLengthText;
     public AddPortal AddPortalSript;
     public GameObject finalPOrtalGameObject;
     public AudioSource eatSound;
@@ -41,6 +42,7 @@ public class Snake : MonoBehaviour
     public GameObject lastTailPrefab;
     public GameObject initialBody;
     public GameObject initialTail;
+    public GameObject fromPortalBobyPieceGO;
     public int desiredLengthOfSnake;
     Vector2 dir = Vector2.left;
     private List<Transform> tail = new List<Transform>();
@@ -178,7 +180,7 @@ public class Snake : MonoBehaviour
         {
             // Get shorter in next Move call
             shrink = true;
-
+            desiredLengthOfSnake--;
             // Remove the Food
             Destroy(coll.gameObject);
             score += foodScoreDecrease;
@@ -266,9 +268,11 @@ public class Snake : MonoBehaviour
 
         }
         else if (coll.name.StartsWith(AddPortalSript.backgroundOut.name)) {
-        } else if (coll.name.StartsWith(finalPOrtalGameObject.name)) {
-            desiredLengthOfSnake *= 2;
+        } 
+        else if (coll.name.StartsWith(finalPOrtalGameObject.name)) {
+            desiredLengthOfSnake += 6;
             SetLevel(nextLevel);
+            Loading.unlockLevel(nextLevel);
             nextLevel++;
             if (nextLevel == 4) { nextLevel = 0; }
             finalPortalOpen = false;
@@ -294,7 +298,7 @@ public class Snake : MonoBehaviour
     {
         //Debug.Log("hybem sa!");
         GameObject lastPosition;
-        portal = false;
+        
         Vector2 currentPossition = transform.position;
         Vector2 position;
         Quaternion rotation;
@@ -304,15 +308,9 @@ public class Snake : MonoBehaviour
         if (ate)
         {
             SpawnFood();
-            if (tail.Count == 0) {
-                tail.Add(((GameObject)Instantiate(lastTailPrefab, currentPossition, transform.rotation)).transform);
-            }
-            else
-            {
                 tail.Insert(0, ((GameObject)Instantiate(tailPrefab, currentPossition, transform.rotation)).transform);
-            }
-            ate = false;
-
+                ate = false;
+           
         }
         else if (shrink)
         {
@@ -368,10 +366,20 @@ public class Snake : MonoBehaviour
                 lastPosition = tail.Last().gameObject;
                 Destroy(lastPosition);
                 tail.RemoveAt(tail.Count - 1);
-                tail.Insert(0, ((GameObject)Instantiate(tailPrefab, currentPossition, transform.rotation)).transform);
+                /*if (portal)
+                {
+                    tail.Insert(0, ((GameObject)Instantiate(fromPortalBobyPieceGO, currentPossition, transform.rotation)).transform);
+                }
+                else
+                {*/
+
+                    tail.Insert(0, ((GameObject)Instantiate(tailPrefab, currentPossition, transform.rotation)).transform);
+               // }
                 tail.Add(((GameObject)Instantiate(lastTailPrefab, position, rotation)).transform);
             
         }
+        portal = false;
+        snakeLengthText.text = tail.Count+"/"+desiredLengthOfSnake;
     }
 
     bool inBounds(Vector3 bounds)
@@ -630,7 +638,9 @@ public void SetLevel(int levelId)
         Destroy(finalPortalGO);
         Destroy(foodGO);
         forgetObstacles();
-		Loading.setLastLevelId (levelId);
+		Loading.setLastLevelId(levelId);
+        nextLevel = levelId + 1;
+        if (nextLevel == 4) { nextLevel = 0; }
 		setObstacles(Loading.GetBariers(levelId));
         setPictures(Loading.GetPictures(levelId));
         SpawnFood();
