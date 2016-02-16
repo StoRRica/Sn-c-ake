@@ -1,29 +1,12 @@
-# Unity-Project-Template
+# Sn(c)ake
+Teh game 
 
+This is our implamantation of game we call Sn(c)ake, as the name suggest it is a kind of snake based game with one difference.
+You don't hit any key to tell snake which way to go, but you need to put portals on the board. 
+There are two kinds of portal in going and outgoing. So basically you telport snake all over the board (except obstacles) and choose
+which way the snake will go by outgoing portals. 
 
-This template is designed to simplify process of starting of new project in Unity engine using Git.
-You can simply:
-
-1. Fork this repository
-
-2. Rename it
-
-3. Clone it
-
-4. Develop your own projects in Unity using Git for version control
-
-
-
-## Folder structure
-
-* There are prepared several basic folders such as 'Models' and 'Prefabs', comonly used for projects in Unity editor. 
-
-* Git is set to ignore content of '_NonVersioned' folder - so you can freely put there anything that shloud not be tracked by by Git (like working versions of 3D models, textures, ...).
-
-* You can change content of file '.gitignore' to adjust which folders and files should be ignored by Git
-
-
-
+Whole project is done in Unity.
 
 ### Markdown
 
