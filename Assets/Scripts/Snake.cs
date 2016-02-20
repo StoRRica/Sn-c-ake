@@ -115,6 +115,8 @@ public class Snake : MonoBehaviour
         forgetObstacles();
 		setObstacles(Loading.GetBariers(Loading.getLastLevelId()));
         setPictures(Loading.GetPictures(Loading.getLastLevelId()));
+        nextLevel = Loading.getLastLevelId() + 1;
+        if (nextLevel == 4) { nextLevel = 0; }
         tail.Add(initialBody.transform);
         tail.Add(initialTail.transform);
         SpawnFood();
