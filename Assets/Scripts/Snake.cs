@@ -592,7 +592,7 @@ void setObstacles(JSONNode bariers)
             position.x =Mathf.Round( borderLeft.position.x + (x * xDist / numOfColls) +1);
             position.y =Mathf.Round( borderTop.position.y - (y * yDist / numOfRows) -1 );
             //obstaclesGO.Add((GameObject)Instantiate(obstaclePrefab, position, Quaternion.identity));
-			Debug.Log ("obstacle"+ obstacle[y][x] + "position: "+position);
+			Debug.Log ("obstacle x: "+x + "y:" + y + "position: "+position);
 		}
 	}
 
@@ -625,8 +625,8 @@ void setObstacles(JSONNode bariers)
                         }
 
                     }*/
-                    position.x += 1;
-                    position.y -= 1;
+                    position.x += 3;
+                    position.y -= 3;
                     obstaclesGO.Add((GameObject)Instantiate(hrncekObstacleGo, position, Quaternion.identity));
                     break;
                 case 1:
