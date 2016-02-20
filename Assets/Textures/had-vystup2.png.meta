@@ -1,0 +1,148 @@
+fileFormatVersion: 2
+guid: a1c1b2745c6aec64ea765d1d06a0df82
+timeCreated: 1455926838
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: "had-v\xFDstup2_0"
+    21300002: "had-v\xFDstup2_1"
+    21300004: "had-v\xFDstup2_2"
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: "had-v\xFDstup2_0"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 524
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -65, y: -57}
+        - {x: -19, y: -39}
+        - {x: 16, y: -14}
+        - {x: 16, y: 3}
+        - {x: 13, y: 18}
+        - {x: -16, y: 49}
+        - {x: -32, y: 56}
+        - {x: -72, y: 55}
+        - {x: -123, y: 98}
+        - {x: -138, y: 117}
+        - {x: -165, y: 130}
+        - {x: -224, y: 130}
+        - {x: -250, y: 122}
+        - {x: -250, y: -132}
+        - {x: -218, y: -132}
+        - {x: -191, y: -129}
+        - {x: -132, y: -115}
+        - {x: -108, y: -106}
+    - name: "had-v\xFDstup2_1"
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 524
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28, y: -47}
+        - {x: 6, y: -28}
+        - {x: 6, y: 5}
+        - {x: 0, y: 17}
+        - {x: -35, y: 43}
+        - {x: -68, y: 64}
+        - {x: -100, y: 76}
+        - {x: -135, y: 115}
+        - {x: -153, y: 127}
+        - {x: -163, y: 130}
+        - {x: -192, y: 130}
+        - {x: -240, y: 122}
+        - {x: -250, y: 119}
+        - {x: -250, y: -126}
+        - {x: -222, y: -126}
+        - {x: -151, y: -122}
+        - {x: -115, y: -109}
+        - {x: -80, y: -65}
+    - name: "had-v\xFDstup2_2"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 24
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -76, y: -86}
+        - {x: -48, y: -41}
+        - {x: 1, y: -28}
+        - {x: 19, y: -15}
+        - {x: 20, y: -11}
+        - {x: 20, y: 7}
+        - {x: -9, y: 43}
+        - {x: -57, y: 56}
+        - {x: -96, y: 74}
+        - {x: -106, y: 94}
+        - {x: -141, y: 126}
+        - {x: -171, y: 132}
+        - {x: -210, y: 132}
+        - {x: -250, y: 122}
+        - {x: -250, y: -129}
+        - {x: -234, y: -128}
+        - {x: -180, y: -119}
+        - {x: -153, y: -127}
+        - {x: -88, y: -103}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

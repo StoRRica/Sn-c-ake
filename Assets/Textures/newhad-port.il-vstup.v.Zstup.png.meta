@@ -1,0 +1,152 @@
+fileFormatVersion: 2
+guid: 58ff670c23fa80649a830d4dacf4103f
+timeCreated: 1455922365
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: "newhad-port\xE1l-vstup,v\xFDstup_0"
+    21300002: "newhad-port\xE1l-vstup,v\xFDstup_1"
+    21300004: "newhad-port\xE1l-vstup,v\xFDstup_2"
+    21300006: "newhad-port+\xEDl-vstup,v+\u017Bstup_0"
+    21300008: "newhad-port+\xEDl-vstup,v+\u017Bstup_1"
+    21300010: "newhad-port+\xEDl-vstup,v+\u017Bstup_2"
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: "newhad-port+\xEDl-vstup,v+\u017Bstup_0"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 524
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 155, y: 130}
+        - {x: 121, y: 106}
+        - {x: 100, y: 77}
+        - {x: 74, y: 69}
+        - {x: 15, y: 31}
+        - {x: -6, y: 8}
+        - {x: -6, y: -24}
+        - {x: -5, y: -27}
+        - {x: 14, y: -38}
+        - {x: 89, y: -71}
+        - {x: 96, y: -86}
+        - {x: 116, y: -107}
+        - {x: 141, y: -119}
+        - {x: 169, y: -122}
+        - {x: 235, y: -126}
+        - {x: 250, y: -126}
+        - {x: 250, y: 119}
+        - {x: 190, y: 130}
+    - name: "newhad-port+\xEDl-vstup,v+\u017Bstup_1"
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 524
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 157, y: 130}
+        - {x: 126, y: 107}
+        - {x: 111, y: 72}
+        - {x: 25, y: 55}
+        - {x: -4, y: 32}
+        - {x: -16, y: 4}
+        - {x: -16, y: -13}
+        - {x: 19, y: -40}
+        - {x: 36, y: -45}
+        - {x: 59, y: -49}
+        - {x: 93, y: -89}
+        - {x: 120, y: -115}
+        - {x: 172, y: -121}
+        - {x: 191, y: -130}
+        - {x: 236, y: -132}
+        - {x: 250, y: -132}
+        - {x: 250, y: 122}
+        - {x: 229, y: 130}
+    - name: "newhad-port+\xEDl-vstup,v+\u017Bstup_2"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 24
+        width: 500
+        height: 500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 159, y: 132}
+        - {x: 151, y: 131}
+        - {x: 114, y: 103}
+        - {x: 90, y: 69}
+        - {x: 65, y: 54}
+        - {x: 35, y: 51}
+        - {x: 12, y: 40}
+        - {x: -13, y: 15}
+        - {x: -20, y: 5}
+        - {x: -20, y: -9}
+        - {x: -19, y: -16}
+        - {x: -1, y: -28}
+        - {x: 81, y: -92}
+        - {x: 91, y: -100}
+        - {x: 143, y: -121}
+        - {x: 181, y: -120}
+        - {x: 237, y: -129}
+        - {x: 250, y: -129}
+        - {x: 250, y: 122}
+        - {x: 213, y: 132}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
