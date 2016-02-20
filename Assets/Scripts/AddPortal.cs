@@ -8,11 +8,14 @@ public class AddPortal : MonoBehaviour {
     public float distance;
     public GameObject backgroundIn;
     public GameObject backgroundOut;
+    //public Animation inPortal;
     public Sprite inPortal;
     public Sprite outPortalUp;
     public Sprite outPortalDown;
     public Sprite outPortalLeft;
     public Sprite outPortalRight;
+    public Vector3 inPos;
+    public Vector3 outPos;
     private bool input = true;
     private bool outputPortal = false;
     private InputPortal por;
@@ -52,7 +55,7 @@ public class AddPortal : MonoBehaviour {
             if (pos.x <= 0) pos.x = Mathf.Round((int)pos.x / 2) * 2 - 1;
             if (pos.y < 0) pos.y = Mathf.Round((int)pos.y / 2) * 2 - 1;
             if (pos.y >= 0) pos.y = Mathf.Round((int)pos.y / 2) * 2 + 1;
-            Debug.Log("OnMouseDown " + pos);
+            //Debug.Log("OnMouseDown " + pos);
             mouseDown = true;
             if (input)
             {
@@ -62,6 +65,8 @@ public class AddPortal : MonoBehaviour {
                 obj.GetComponent<Renderer>().material.color = portalColor;
                 //obj.GetComponent<Renderer>().material.mainTexture = inPortal;
                 obj.GetComponent<SpriteRenderer>().sprite = inPortal;
+                inPos = pos;
+                Debug.Log("inPos: " + pos);
 
                 PortalId idOfNewPortal = obj.GetComponent<PortalId>();
                 idOfNewPortal.setId(id);
@@ -123,6 +128,7 @@ public class AddPortal : MonoBehaviour {
                     currentOutputPortal.GetComponent<SpriteRenderer>().sprite = outPortalDown;
                     }
                 }
+                outPos = pos;
                 Debug.Log("Direction: " + vec);
                 mouseDown = false;          
                 OutputPortal localOutputPortal = new OutputPortal(id, vec);
@@ -146,11 +152,28 @@ public class AddPortal : MonoBehaviour {
         this.inMenu = inMenu;
     }
 
+    public void GetInPortalCoords()
+    {
+        
+    }
+
     public class InputPortal
     {
         int id;
+        int x,y;
 
         public GameObject InputPortalGO;
+
+        public void setPosition(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+
+        public Vector3 getPosition()
+        {
+            return new Vector3(x, y, 0);
+        }
 
         public InputPortal(int id) {
             this.id = id;

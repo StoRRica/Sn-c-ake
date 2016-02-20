@@ -20,6 +20,7 @@ public class Snake : MonoBehaviour
     public GameObject eraserObstacleGo;
     public GameObject pencilObstacleGO;
     public GameObject phoneObstacleGo;
+    public GameObject hrncekObstacleGo;
     public Canvas gamePausedText;
     public Canvas gameOverScreen;
     public Text scoreText;
@@ -43,9 +44,11 @@ public class Snake : MonoBehaviour
     public GameObject initialBody;
     public GameObject initialTail;
     public GameObject fromPortalBobyPieceGO;
+    public GameObject toPortalBobyPieceGO;
     public int desiredLengthOfSnake;
     Vector2 dir = Vector2.left;
     private List<Transform> tail = new List<Transform>();
+    private List<Transform> toPortal = new List<Transform>();
     bool ate = false;
     bool shrink = false;
     bool portal = false;
@@ -211,7 +214,7 @@ public class Snake : MonoBehaviour
             List<AddPortal.Tuple> portals = AddPortalSript.portals;
             PortalId something = coll.gameObject.GetComponent<PortalId>();
             int id = something.id;
-            Debug.Log("Collision portal id: " + id);
+            //Debug.Log("Collision portal id: " + id);
             AddPortal.Tuple onIndex = null;
             foreach (AddPortal.Tuple tup in portals)
             {
@@ -258,6 +261,8 @@ public class Snake : MonoBehaviour
                 }
                 //Debug.Log(transform.rotation);
                 transform.position = onIndex.outputPortal.getPosition();
+                
+                
 
                 PortalToDelete local = new PortalToDelete();
                 local.setInputPortal(coll.gameObject);
@@ -286,8 +291,8 @@ public class Snake : MonoBehaviour
             score = 0;
             scoreText.text = score.ToString();
             // ToDo 'You lose' screen
-            Debug.Log("collision with: " + coll.name);
-            Debug.Log("Score: " + tail.Count);
+            //Debug.Log("collision with: " + coll.name);
+            //Debug.Log("Score: " + tail.Count);
             //initialize();
         }
     }
@@ -298,10 +303,16 @@ public class Snake : MonoBehaviour
     {
         //Debug.Log("hybem sa!");
         GameObject lastPosition;
+        //GameObject lastPos;
         
         Vector2 currentPossition = transform.position;
         Vector2 position;
+        //Vector3 pos;
+        //Vector2 ppp;
+        List<Vector2> outPozicia = new List<Vector2>();
+        List<Vector2> inPozicia = new List<Vector2>();
         Quaternion rotation;
+        //Quaternion rot;
         transform.Translate(dir * moveDistance, Space.World);
     
 
@@ -357,25 +368,53 @@ public class Snake : MonoBehaviour
         }
         else if (tail.Count >=2 )
         {
-            
+
+                //rot = tail.Last().rotation;
+                //ppp = tail.Last().position;
                 lastPosition = tail.Last().gameObject;
                 Destroy(lastPosition);
                 tail.RemoveAt(tail.Count - 1);
                 position = tail.Last().position;
                 rotation = tail.Last().rotation;
+                //pos = AddPortalSript.inPos;
+                //ppp = AddPortalSript.outPos;
+                //inPozicia.Add(pos);
+                //outPozicia.Add(ppp);
+                //pozicia.Add(ppp);
+                //Debug.Log("ppp: " + ppp);
+                //Debug.Log("position: " + position);
+               /* for (int i = 0; i < outPozicia.Count; i++ )
+                {
+                    if (toPortal.Count > 0 && outPozicia[i].x == position.x && outPozicia[i].y == position.y)
+                    {
+                        //Debug.Log("poz: " + ppp[toPortal.Count]);
+                        lastPos = toPortal.Last().gameObject;
+                        Destroy(lastPos);
+                        toPortal.RemoveAt(toPortal.Count - 1);
+                        inPozicia.RemoveAt(inPozicia.Count - 1);
+                        outPozicia.RemoveAt(outPozicia.Count - 1);
+                    } 
+                }*/
                 lastPosition = tail.Last().gameObject;
                 Destroy(lastPosition);
-                tail.RemoveAt(tail.Count - 1);
-                /*if (portal)
+                tail.RemoveAt(tail.Count - 1);          
+                if (portal)
                 {
                     tail.Insert(0, ((GameObject)Instantiate(fromPortalBobyPieceGO, currentPossition, transform.rotation)).transform);
+                    /*for (int i = 0; i < inPozicia.Count; i++)
+                    {
+                        toPortal.Insert(0, ((GameObject)Instantiate(toPortalBobyPieceGO, inPozicia[i], rot)).transform);
+                    }*/
                 }
                 else
-                {*/
+                {
 
                     tail.Insert(0, ((GameObject)Instantiate(tailPrefab, currentPossition, transform.rotation)).transform);
-               // }
+                    
+                    
+                }
                 tail.Add(((GameObject)Instantiate(lastTailPrefab, position, rotation)).transform);
+                
             
         }
         portal = false;
@@ -446,7 +485,7 @@ public class Snake : MonoBehaviour
             specialFoodCount = 0;
             /*0,1,2*/
             int ran = (int)Random.Range(0, 3);
-            Debug.Log("random: " + ran);
+            //Debug.Log("random: " + ran);
             if (ran == 0) {
                 specialFoodObject = (GameObject)Instantiate(decreaseSnakeLengthFoodPrefab,
                         new Vector2(pos.x, pos.y),
@@ -530,7 +569,7 @@ public class Snake : MonoBehaviour
             }
         }
         foreach (GameObject obj in obstaclesGO) {
-            Debug.Log("Destorying: " + obj);
+            //Debug.Log("Destorying: " + obj);
             Destroy(obj);
             
         }
@@ -543,7 +582,7 @@ void setObstacles(JSONNode bariers)
         int xDist = Mathf.Abs((int)(borderRight.position.x - borderLeft.position.x));
         int yDist = Mathf.Abs((int)(borderBottom.position.y - borderTop.position.y));
 
-        Debug.Log ("setObstacles");
+        //Debug.Log ("setObstacles");
 		for (int i = 0; i < bariers.Count; i++)
 		{
             x = bariers[i]["x"].AsInt;
@@ -559,7 +598,7 @@ void setObstacles(JSONNode bariers)
 
     void setPictures(JSONNode pictures)
     {
-        Debug.Log("setPictures");
+        //Debug.Log("setPictures");
         int xDist = Mathf.Abs((int)(borderRight.position.x - borderLeft.position.x));
         int yDist = Mathf.Abs((int)(borderBottom.position.y - borderTop.position.y));
 
@@ -577,15 +616,18 @@ void setObstacles(JSONNode bariers)
             {
                 case 0:
                     //todo hrncek
-                    for (int k = 0; k < 5; k++) {
+                    /*for (int k = 0; k < 5; k++) {
                         for (int j = 0; j < 4; j++) {
                             position.x = Mathf.Round(borderLeft.position.x + (x * xDist / numOfColls) + 1 + j *2);
                             position.y = Mathf.Round(borderTop.position.y - (y * yDist / numOfRows) - 1 - k * 2);
                             obstaclesGO.Add((GameObject)Instantiate(obstaclePrefab, position, Quaternion.identity));
 
                         }
-                    }
-                    
+
+                    }*/
+                    position.x += 1;
+                    position.y -= 1;
+                    obstaclesGO.Add((GameObject)Instantiate(hrncekObstacleGo, position, Quaternion.identity));
                     break;
                 case 1:
                     //todo guma
