@@ -192,12 +192,18 @@ public void ResetHighscore()
         audio[1].Play();
     }
 
+    public void StartLevelv2() {
+        SetLevel(0);
+    }
+        
     public void GameOver()
     {
         gameOver.enabled = false;
         SceneManager.LoadScene(0);
         StartLevel();
-    } public void SetLevel(int levelId)
+    }
+
+    public void SetLevel(int levelId)
 	{
 		Debug.Log ("SetLevel");
 		levelsCanvas.enabled = false;
