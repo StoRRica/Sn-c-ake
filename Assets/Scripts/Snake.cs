@@ -77,7 +77,8 @@ public class Snake : MonoBehaviour
     private Quaternion initialBodyRotation;
     private Vector3 initialHeadPosition;
     private Quaternion initialHeadRotation;
-    
+
+
     bool[][] obstacle = new bool[numOfRows][]; /*12*20*/
                                                // Use this for initialization
     class PortalToDelete {
@@ -132,7 +133,7 @@ public class Snake : MonoBehaviour
         initialHeadPosition = transform.position;
         initialHeadRotation = transform.rotation;
         SpawnFood();
-        
+        ToggleAnimation(true);
     }
   
     /*guarantees same time between each update*/
@@ -290,8 +291,8 @@ public class Snake : MonoBehaviour
         } 
         else if (coll.name.StartsWith(finalPOrtalGameObject.name)) {
             desiredLengthOfSnake += 6;
-            SetLevel(nextLevel);
             Loading.unlockLevel(nextLevel);
+            SetLevel(nextLevel);    
             nextLevel++;
             if (nextLevel == 4) { nextLevel = 0; }
             finalPortalOpen = false;
@@ -319,8 +320,6 @@ public class Snake : MonoBehaviour
         GameObject lastPosition;        
         Vector2 currentPossition = transform.position;
         Vector2 position;
-        List<Vector2> outPozicia = new List<Vector2>();
-        List<Vector2> inPozicia = new List<Vector2>();
         Quaternion rotation;
 
         transform.Translate(dir * moveDistance, Space.World);
@@ -669,6 +668,7 @@ void setObstacles(JSONNode bariers)
     public void StartAtLevel(int levelId) {
         /*make initial snake transform, forget all poratls*/
         DestroySnake();
+        
         AddPortalSript.ForgetPortals();
         //move head to beginning
         transform.position = initialHeadPosition;
@@ -678,7 +678,7 @@ void setObstacles(JSONNode bariers)
         //create tail on initial position
         tail.Add(((GameObject)Instantiate(lastTailPrefab,initialTailPosition,initialTailRotation)).transform);
         dir = Vector2.left;
-
+        ToggleAnimation(true);
         SetLevel(levelId);
     }
 
@@ -705,7 +705,17 @@ void setObstacles(JSONNode bariers)
         AddPortalSript.setInMenu(true);
         gameOverScoreText.text = score.ToString();
         gameOverScreen.enabled = true;
+        //this.GetComponent<Animator>().animation;
+        ToggleAnimation(false);
         forgetObstacles();
+    }
+
+    private void ToggleAnimation(bool animate) {
+        
+        GetComponent<Animator>().enabled = animate;
+        foreach (Transform transform in tail) {
+            transform.gameObject.GetComponent<Animator>().enabled = animate;
+        }
     }
 
     public void loadSceneZero()
