@@ -201,7 +201,7 @@ public void ResetHighscore()
 	{
 		Debug.Log ("SetLevel");
 		levelsCanvas.enabled = false;
-		snakeScript.SetLevel (levelId);
+		snakeScript.StartAtLevel(levelId);
 		StartLevel ();
 	}
 

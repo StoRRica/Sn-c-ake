@@ -20,7 +20,7 @@ public class Snake : MonoBehaviour
     public GameObject eraserObstacleGo;
     public GameObject pencilObstacleGO;
     public GameObject phoneObstacleGo;
-    public GameObject hrncekObstacleGo;
+    public GameObject CupObstaccleGo;
     public Canvas gamePausedText;
     public Canvas gameOverScreen;
     public Text scoreText;
@@ -71,8 +71,13 @@ public class Snake : MonoBehaviour
     private GameObject finalPortalGO;
     private List<GameObject> obstaclesGO = new List<GameObject>();
     private GameObject foodGO;
-        
-
+    private Vector3 initialTailPosition;
+    private Quaternion initialTailRotation;
+    private Vector3 initialBodyPosition;
+    private Quaternion initialBodyRotation;
+    private Vector3 initialHeadPosition;
+    private Quaternion initialHeadRotation;
+    
     bool[][] obstacle = new bool[numOfRows][]; /*12*20*/
                                                // Use this for initialization
     class PortalToDelete {
@@ -119,6 +124,12 @@ public class Snake : MonoBehaviour
         if (nextLevel == 4) { nextLevel = 0; }
         tail.Add(initialBody.transform);
         tail.Add(initialTail.transform);
+        initialBodyRotation = initialBody.transform.rotation;
+        initialBodyPosition = initialBody.transform.position;
+        initialTailPosition = initialTail.transform.position;
+        initialTailRotation = initialTail.transform.rotation;
+        initialHeadPosition = transform.position;
+        initialHeadRotation = transform.rotation;
         SpawnFood();
 
     }
@@ -304,17 +315,13 @@ public class Snake : MonoBehaviour
     public void Move()
     {
         //Debug.Log("hybem sa!");
-        GameObject lastPosition;
-        //GameObject lastPos;
-        
+        GameObject lastPosition;        
         Vector2 currentPossition = transform.position;
         Vector2 position;
-        //Vector3 pos;
-        //Vector2 ppp;
         List<Vector2> outPozicia = new List<Vector2>();
         List<Vector2> inPozicia = new List<Vector2>();
         Quaternion rotation;
-        //Quaternion rot;
+
         transform.Translate(dir * moveDistance, Space.World);
     
 
@@ -350,53 +357,25 @@ public class Snake : MonoBehaviour
                 }
                 else {
                     gameOver();
-                   /* tail.Last().position = currentPossition;
-                    tail.Last().rotation = transform.rotation;
-                    tail.Insert(0, tail.Last());
-                    tail.RemoveAt(tail.Count - 1);
-                    lastPosition = tail.Last().gameObject;
-                    Destroy(lastPosition);
-                    tail.RemoveAt(tail.Count - 1);*/
+                 
                     
                 }
-                //tail.Insert(tail.Count - 1, ();
-                //tail.Last().GetComponent<SpriteRenderer>().sprite = lastTailPrefab.GetComponent<SpriteRenderer>().sprite;
-                SpawnFood();
+               SpawnFood();
             }
             else {
-                /*GAME OVER dlzka hada je < 0*/
+                /*GAME OVER dlzka hada je < 2*/
                 gameOver();
             }
         }
         else if (tail.Count >=2 )
         {
 
-                //rot = tail.Last().rotation;
-                //ppp = tail.Last().position;
                 lastPosition = tail.Last().gameObject;
                 Destroy(lastPosition);
                 tail.RemoveAt(tail.Count - 1);
                 position = tail.Last().position;
                 rotation = tail.Last().rotation;
-                //pos = AddPortalSript.inPos;
-                //ppp = AddPortalSript.outPos;
-                //inPozicia.Add(pos);
-                //outPozicia.Add(ppp);
-                //pozicia.Add(ppp);
-                //Debug.Log("ppp: " + ppp);
-                //Debug.Log("position: " + position);
-               /* for (int i = 0; i < outPozicia.Count; i++ )
-                {
-                    if (toPortal.Count > 0 && outPozicia[i].x == position.x && outPozicia[i].y == position.y)
-                    {
-                        //Debug.Log("poz: " + ppp[toPortal.Count]);
-                        lastPos = toPortal.Last().gameObject;
-                        Destroy(lastPos);
-                        toPortal.RemoveAt(toPortal.Count - 1);
-                        inPozicia.RemoveAt(inPozicia.Count - 1);
-                        outPozicia.RemoveAt(outPozicia.Count - 1);
-                    } 
-                }*/
+               
                 lastPosition = tail.Last().gameObject;
                 Destroy(lastPosition);
                 tail.RemoveAt(tail.Count - 1);          
@@ -629,7 +608,7 @@ void setObstacles(JSONNode bariers)
                     }*/
                     position.x += 3;
                     position.y -= 3;
-                    obstaclesGO.Add((GameObject)Instantiate(hrncekObstacleGo, position, Quaternion.identity));
+                    obstaclesGO.Add((GameObject)Instantiate(CupObstaccleGo, position, Quaternion.identity));
                     break;
                 case 1:
                     //todo guma
@@ -677,7 +656,31 @@ void setObstacles(JSONNode bariers)
         return gamePausedText.enabled;
     }
 
-public void SetLevel(int levelId)
+    private void DestroySnake() {
+        foreach (Transform tr in tail) {
+            Destroy(tr.gameObject);
+        }
+        tail = new List<Transform>();
+               
+    }
+
+    public void StartAtLevel(int levelId) {
+        /*make initial snake transform, forget all poratls*/
+        DestroySnake();
+
+        //move head to beginning
+        transform.position = initialHeadPosition;
+        transform.rotation = initialHeadRotation;
+        //create body on initial position
+        tail.Add(((GameObject)Instantiate(tailPrefab,initialBodyPosition,initialBodyRotation)).transform);
+        //create tail on initial position
+        tail.Add(((GameObject)Instantiate(lastTailPrefab,initialTailPosition,initialTailRotation)).transform);
+        dir = Vector2.left;
+
+        SetLevel(levelId);
+    }
+
+    public void SetLevel(int levelId)
 	{
         Destroy(finalPortalGO);
         Destroy(foodGO);
@@ -692,7 +695,7 @@ public void SetLevel(int levelId)
     /*TODO: implement game over screen here*/
     void gameOver()
     {
-        forgetObstacles();
+        
 
         pause = true;
         inMenu = true;
@@ -700,6 +703,7 @@ public void SetLevel(int levelId)
         AddPortalSript.setInMenu(true);
         gameOverScoreText.text = score.ToString();
         gameOverScreen.enabled = true;
+        forgetObstacles();
     }
 
     public void loadSceneZero()

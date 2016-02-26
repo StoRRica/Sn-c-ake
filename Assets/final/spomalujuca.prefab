@@ -11,7 +11,7 @@ GameObject:
   - 212: {fileID: 21296464}
   - 61: {fileID: 6184390}
   m_Layer: 0
-  m_Name: "spomaluj\xFAca"
+  m_Name: spomalujuca
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

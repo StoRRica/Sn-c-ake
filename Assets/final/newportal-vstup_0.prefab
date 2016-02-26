@@ -11,7 +11,7 @@ GameObject:
   - 212: {fileID: 21239648}
   - 95: {fileID: 9548800}
   m_Layer: 0
-  m_Name: "newport\xE1l-vstup_0"
+  m_Name: newportal-vstup_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
