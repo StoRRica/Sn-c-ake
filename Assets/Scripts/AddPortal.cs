@@ -152,9 +152,12 @@ public class AddPortal : MonoBehaviour {
         this.inMenu = inMenu;
     }
 
-    public void GetInPortalCoords()
-    {
-        
+    public void ForgetPortals() {
+        foreach (Tuple tup in portals) {
+            Destroy(tup.inputPortal.InputPortalGO);
+            Destroy(tup.outputPortal.getOutputPortal());
+        }
+        portals = new List<Tuple>();
     }
 
     public class InputPortal

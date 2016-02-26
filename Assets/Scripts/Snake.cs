@@ -102,7 +102,8 @@ public class Snake : MonoBehaviour
 
     void Start()
     {
-		Loading.LoadLevels();
+        AddPortalSript.ForgetPortals();
+        Loading.LoadLevels();
         background = GameObject.FindGameObjectWithTag("Background");
         gamePausedText = gamePausedText.GetComponent<Canvas>();
         gamePausedText.enabled = false;
@@ -131,7 +132,7 @@ public class Snake : MonoBehaviour
         initialHeadPosition = transform.position;
         initialHeadRotation = transform.rotation;
         SpawnFood();
-
+        
     }
   
     /*guarantees same time between each update*/
@@ -555,6 +556,7 @@ public class Snake : MonoBehaviour
             
         }
         obstaclesGO = new List<GameObject>();
+        
     }
 
 void setObstacles(JSONNode bariers)
@@ -667,7 +669,7 @@ void setObstacles(JSONNode bariers)
     public void StartAtLevel(int levelId) {
         /*make initial snake transform, forget all poratls*/
         DestroySnake();
-
+        AddPortalSript.ForgetPortals();
         //move head to beginning
         transform.position = initialHeadPosition;
         transform.rotation = initialHeadRotation;
