@@ -1368,7 +1368,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 149440021
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &396875061
 RectTransform:
@@ -3829,7 +3829,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 149440021
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &937179741
 RectTransform:
@@ -5065,7 +5065,7 @@ MonoBehaviour:
   eraserObstacleGo: {fileID: 167318, guid: 8998ab56d23d8664b974b7fcc17b38bf, type: 2}
   pencilObstacleGO: {fileID: 152690, guid: 6fc2c3a4f62960b4bbe793b48d3db780, type: 2}
   phoneObstacleGo: {fileID: 163146, guid: 074ec3316f17e4247915a465a914b7cd, type: 2}
-  hrncekObstacleGo: {fileID: 104740, guid: a467c634e2193fb4fbbbd5fed353bf26, type: 2}
+  CupObstaccleGo: {fileID: 0}
   gamePausedText: {fileID: 1833104591}
   gameOverScreen: {fileID: 2131501153}
   scoreText: {fileID: 1805703814}
@@ -6880,7 +6880,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7079,7 +7079,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7529,7 +7529,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 149440021
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1813276435
 RectTransform:
@@ -8887,7 +8887,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 149440021
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &2104310729
 MonoBehaviour:
