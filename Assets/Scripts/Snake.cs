@@ -540,7 +540,7 @@ public class Snake : MonoBehaviour
         finalPortalGO = (GameObject) Instantiate(finalPOrtalGameObject, position, Quaternion.identity);
     }
 
-    void forgetObstacles()
+    public void forgetObstacles()
     {
         for (int i = 0; i < numOfRows; i++)
         {
