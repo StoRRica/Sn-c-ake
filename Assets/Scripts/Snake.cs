@@ -59,8 +59,8 @@ public class Snake : MonoBehaviour
     private bool isSpecialOnTable = false;
     private GameObject specialFoodObject;
     private float specialTime;
-    private static int numOfRows = 12;
-    private static int numOfColls = 20;
+    public static int numOfRows = 12;
+    public static int numOfColls = 20;
 
     private int score = 0;
     private static int foodScoreNormal = 10;
@@ -79,7 +79,7 @@ public class Snake : MonoBehaviour
     private Quaternion initialHeadRotation;
 
 
-    bool[][] obstacle; //= new bool[numOfRows][]; /*12*20*/
+    public bool[][] obstacle; //= new bool[numOfRows][]; /*12*20*/
                                                // Use this for initialization
     class PortalToDelete {
         private static GameObject inputPortal;
@@ -291,7 +291,7 @@ public class Snake : MonoBehaviour
                 }
                 //Debug.Log(transform.rotation);
                 transform.position = onIndex.outputPortal.getPosition();
-                
+                Move();
                 
 
                 PortalToDelete local = new PortalToDelete();
@@ -509,7 +509,7 @@ public class Snake : MonoBehaviour
         }
     }
 
-    int whichInRange(int start, int position, int step)
+    public int whichInRange(int start, int position, int step)
     {
         //Debug.Log("start: " + start + " position: " + position + " step: " + step);
         int current = start + step;

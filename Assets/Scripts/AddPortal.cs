@@ -28,10 +28,16 @@ public class AddPortal : MonoBehaviour {
     private GameObject currentOutputPortal;
     private bool pause = true;
     private bool inMenu = true;
+    public Snake SnakeScript;
+    public Transform borderBottom;
+    public Transform borderLeft;
+    public Transform borderRight;
+    public Transform borderTop;
 
     void Start () {
         distance = 1.0f;
         portalColor = new Color(Random.value, Random.value, Random.value, 1.0f); 
+
     }
 	
 	// Update is called once per frame
@@ -57,36 +63,38 @@ public class AddPortal : MonoBehaviour {
             if (pos.y >= 0) pos.y = Mathf.Round((int)pos.y / 2) * 2 + 1;
             //Debug.Log("OnMouseDown " + pos);
             mouseDown = true;
-            if (input)
+            if (isSafePlant((int)pos.x, (int)pos.y))
             {
-                GameObject obj = (GameObject)Instantiate(backgroundIn, pos, Quaternion.identity);
-               // obj.AddComponent<RemovePortal>();
-                obj.AddComponent<PortalId>();
-                obj.GetComponent<Renderer>().material.color = portalColor;
-                //obj.GetComponent<Renderer>().material.mainTexture = inPortal;
-                obj.GetComponent<SpriteRenderer>().sprite = inPortal;
-                inPos = pos;
-                Debug.Log("inPos: " + pos);
+                if (input)
+                {
+                    GameObject obj = (GameObject)Instantiate(backgroundIn, pos, Quaternion.identity);
+                    // obj.AddComponent<RemovePortal>();
+                    obj.AddComponent<PortalId>();
+                    obj.GetComponent<Renderer>().material.color = portalColor;
+                    //obj.GetComponent<Renderer>().material.mainTexture = inPortal;
+                    obj.GetComponent<SpriteRenderer>().sprite = inPortal;
+                    inPos = pos;
+                    Debug.Log("inPos: " + pos);
 
-                PortalId idOfNewPortal = obj.GetComponent<PortalId>();
-                idOfNewPortal.setId(id);
-                por = new InputPortal(id);
-                por.InputPortalGO = obj;
-                input = false;
+                    PortalId idOfNewPortal = obj.GetComponent<PortalId>();
+                    idOfNewPortal.setId(id);
+                    por = new InputPortal(id);
+                    por.InputPortalGO = obj;
+                    input = false;
+                }
+                else
+                {
+                    currentOutputPortal = (GameObject)Instantiate(backgroundOut, pos, Quaternion.identity);
+                    //currentOutputPortal.AddComponent<RemovePortal>();
+                    currentOutputPortal.AddComponent<PortalId>();
+                    currentOutputPortal.GetComponent<Renderer>().material.color = portalColor;
+                    currentOutputPortal.GetComponent<SpriteRenderer>().sprite = inPortal;
+                    PortalId idOfNewPortal = currentOutputPortal.GetComponent<PortalId>();
+                    idOfNewPortal.setId(id);
+                    outputPortal = true;
+                    input = true;
+                }
             }
-            else
-            {
-                currentOutputPortal = (GameObject)Instantiate(backgroundOut, pos, Quaternion.identity);
-                //currentOutputPortal.AddComponent<RemovePortal>();
-                currentOutputPortal.AddComponent<PortalId>();
-                currentOutputPortal.GetComponent<Renderer>().material.color = portalColor;
-                currentOutputPortal.GetComponent<SpriteRenderer>().sprite = inPortal;
-                PortalId idOfNewPortal = currentOutputPortal.GetComponent<PortalId>();
-                idOfNewPortal.setId(id);
-                outputPortal = true;
-                input = true;
-            }
-
         }
     }
     
@@ -158,6 +166,32 @@ public class AddPortal : MonoBehaviour {
             Destroy(tup.outputPortal.getOutputPortal());
         }
         portals = new List<Tuple>();
+    }
+
+    private bool isSafePlant(int x, int y) {
+        int x1 = Mathf.Abs((int)(borderRight.position.x - borderLeft.position.x));
+        int y1 = Mathf.Abs((int)(borderBottom.position.y - borderTop.position.y));
+        // y position between top & bottom border
+           //hardcoded size of background
+        int posY = 11-whichInRange((int)Mathf.Round(borderBottom.position.y), y, y1 / 12);
+        int posX = whichInRange((int)Mathf.Round(borderLeft.position.x), x, x1 / 20);
+        Debug.Log(borderBottom.position.y+" y:"+posY);
+        if (SnakeScript.obstacle[posY][posX]) { return false; }
+
+        return true;
+    }
+
+    public int whichInRange(int start, int position, int step)
+    {
+        //Debug.Log("start: " + start + " position: " + position + " step: " + step);
+        int current = start + step;
+        int i = 0;
+        while (current <= position)
+        {
+            current += step;
+            i++;
+        }
+        return i;
     }
 
     public class InputPortal
