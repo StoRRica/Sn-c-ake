@@ -79,7 +79,7 @@ public class Snake : MonoBehaviour
     private Quaternion initialHeadRotation;
 
 
-    bool[][] obstacle = new bool[numOfRows][]; /*12*20*/
+    bool[][] obstacle; //= new bool[numOfRows][]; /*12*20*/
                                                // Use this for initialization
     class PortalToDelete {
         private static GameObject inputPortal;
@@ -103,6 +103,9 @@ public class Snake : MonoBehaviour
 
     void Start()
     {
+
+
+
         AddPortalSript.ForgetPortals();
         Loading.LoadLevels();
         background = GameObject.FindGameObjectWithTag("Background");
@@ -115,9 +118,13 @@ public class Snake : MonoBehaviour
         eatSound = eatSound.GetComponent<AudioSource>();
         eatSound.volume = 0;
         fixedUpdateCounter = 0;
+        obstacle = new bool[numOfRows][];
         for (int i = 0; i < numOfRows; i++)
         {
             obstacle[i] = new bool[numOfColls];
+            for (int j = 0; j < numOfColls;j++) {
+                Debug.Log(i + "," + j + ":" + obstacle[i][j]);
+            }
         }
         forgetObstacles();
 		setObstacles(Loading.GetBariers(Loading.getLastLevelId()));
@@ -134,6 +141,14 @@ public class Snake : MonoBehaviour
         initialHeadRotation = transform.rotation;
         SpawnFood();
         ToggleAnimation(true);
+
+        /*for (int xC = 0; xC < numOfRows; xC++)
+        {
+            for (int yC = 0; yC < numOfColls; yC++)
+            {
+                Debug.Log("IS SAFE X = " + yC + " Y = " + xC + " ?: " + isSafeFoodPlant(yC, xC));
+            }
+        }*/
     }
   
     /*guarantees same time between each update*/
@@ -510,28 +525,34 @@ public class Snake : MonoBehaviour
     /*in case there are obstacles on board, we need to check whether the food is not going to be planted in some corner, since the snake can't rotate it's head*/
     bool isSafeFoodPlant(int x, int y)
     {
-        if (((x == 0) && (y == 0)) || ((x == numOfRows) && (y == 0)) ||
-            ((x == numOfRows) && (y == numOfColls)) || ((x == 0) && (y == numOfColls)))
+        if (((x == 0) && (y == 0)) || ((x == numOfColls - 1) && (y == 0)) ||
+            ((x == numOfColls - 1) && (y == numOfRows-1)) || ((x == 0) && (y == numOfRows - 1)))
         {
+            Debug.Log("exit1");
             return false; //corners of game plan
         }
         else if (obstacle[y][x] == true)
         {
+            Debug.Log("exit2");
             return false; //hit with the obstacle
         }
-        else if ((y == 0) || (y == numOfColls))
+        else if ((y == 0) || (y == numOfRows - 1))
         {
+            Debug.Log("exit3");
             if ((obstacle[y][x - 1]) || obstacle[y][x + 1]) { return false; } // food by vertical border
         }
-        else if ((x == 0) || (x == numOfRows))
+        else if ((x == 0) || (x == numOfColls - 1))
         {
+            Debug.Log("exit4");
             if ((obstacle[y - 1][x]) || (obstacle[y + 1][x])) { return false; } // food by horizontal border
         }
         else if ((obstacle[y - 1][x] && obstacle[y][x - 1]) || (obstacle[y - 1][x] && obstacle[y][x + 1]) ||
             (obstacle[y][x - 1] && obstacle[y + 1][x]) || (obstacle[y][x - 1] && obstacle[y + 1][x + 1]))
         {
+            Debug.Log("exit5");
             return false;
         }
+        //Debug.Log("exit6");
         return true;
     }
 
