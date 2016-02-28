@@ -122,9 +122,9 @@ public class Snake : MonoBehaviour
         for (int i = 0; i < numOfRows; i++)
         {
             obstacle[i] = new bool[numOfColls];
-            for (int j = 0; j < numOfColls;j++) {
+            /*for (int j = 0; j < numOfColls;j++) {
                 Debug.Log(i + "," + j + ":" + obstacle[i][j]);
-            }
+            }*/
         }
         forgetObstacles();
 		setObstacles(Loading.GetBariers(Loading.getLastLevelId()));
@@ -528,28 +528,28 @@ public class Snake : MonoBehaviour
         if (((x == 0) && (y == 0)) || ((x == numOfColls - 1) && (y == 0)) ||
             ((x == numOfColls - 1) && (y == numOfRows-1)) || ((x == 0) && (y == numOfRows - 1)))
         {
-            Debug.Log("exit1");
+            //Debug.Log("exit1");
             return false; //corners of game plan
         }
         else if (obstacle[y][x] == true)
         {
-            Debug.Log("exit2");
+            //Debug.Log("exit2");
             return false; //hit with the obstacle
         }
         else if ((y == 0) || (y == numOfRows - 1))
         {
-            Debug.Log("exit3");
+            //Debug.Log("exit3");
             if ((obstacle[y][x - 1]) || obstacle[y][x + 1]) { return false; } // food by vertical border
         }
         else if ((x == 0) || (x == numOfColls - 1))
         {
-            Debug.Log("exit4");
+            //Debug.Log("exit4");
             if ((obstacle[y - 1][x]) || (obstacle[y + 1][x])) { return false; } // food by horizontal border
         }
         else if ((obstacle[y - 1][x] && obstacle[y][x - 1]) || (obstacle[y - 1][x] && obstacle[y][x + 1]) ||
             (obstacle[y][x - 1] && obstacle[y + 1][x]) || (obstacle[y][x - 1] && obstacle[y + 1][x + 1]))
         {
-            Debug.Log("exit5");
+            //Debug.Log("exit5");
             return false;
         }
         //Debug.Log("exit6");
@@ -728,7 +728,7 @@ void setObstacles(JSONNode bariers)
         gameOverScreen.enabled = true;
         //this.GetComponent<Animator>().animation;
         ToggleAnimation(false);
-        forgetObstacles();
+        //forgetObstacles();
     }
 
     private void ToggleAnimation(bool animate) {
