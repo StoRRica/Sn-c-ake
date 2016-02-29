@@ -5070,12 +5070,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d94cf41d5b697814cb80a689290fa04c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodPrefab: {fileID: 145664, guid: 95fbf45bb5d4b5944b8bb47f158af4d6, type: 2}
+  foodPrefab: {fileID: 145664, guid: 9e46bc5392935714a95f41c7e94d8495, type: 2}
   decreaseSnakeLengthFoodPrefab: {fileID: 104106, guid: bc52979269d27e9429e10c9e5934e69d,
     type: 2}
   incraseSnakeSpeedFoodPrefab: {fileID: 156412, guid: 1a4f9ceaa14001147a5f2026c7ba67de,
     type: 2}
-  decreaseSnakeSpeedPrefab: {fileID: 104696, guid: 53f7a81b31c13fb499339381abfaded2,
+  decreaseSnakeSpeedPrefab: {fileID: 104696, guid: 5fea1638cde7ecd4fb5ce6ac93aae403,
     type: 2}
   background: {fileID: 1083547084}
   obstaclePrefab: {fileID: 194374, guid: 723d6ee4946b83747a9d45185938954b, type: 2}

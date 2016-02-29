@@ -77,7 +77,7 @@ public class Snake : MonoBehaviour
     private Quaternion initialBodyRotation;
     private Vector3 initialHeadPosition;
     private Quaternion initialHeadRotation;
-
+    private int numOfLevels = 4;
 
     public bool[][] obstacle; //= new bool[numOfRows][]; /*12*20*/
                                                // Use this for initialization
@@ -130,7 +130,7 @@ public class Snake : MonoBehaviour
 		setObstacles(Loading.GetBariers(Loading.getLastLevelId()));
         setPictures(Loading.GetPictures(Loading.getLastLevelId()));
         nextLevel = Loading.getLastLevelId() + 1;
-        if (nextLevel == 4) { nextLevel = 0; }
+        if (nextLevel == numOfLevels) { nextLevel = 0; }
         tail.Add(initialBody.transform);
         tail.Add(initialTail.transform);
         initialBodyRotation = initialBody.transform.rotation;
@@ -303,13 +303,14 @@ public class Snake : MonoBehaviour
 
         }
         else if (coll.name.StartsWith(AddPortalSript.backgroundOut.name)) {
+            gameOver();
         } 
         else if (coll.name.StartsWith(finalPOrtalGameObject.name)) {
             desiredLengthOfSnake += 6;
             Loading.unlockLevel(nextLevel);
             SetLevel(nextLevel);    
             nextLevel++;
-            if (nextLevel == 4) { nextLevel = 0; }
+            if (nextLevel == numOfLevels) { nextLevel = 0; }
             finalPortalOpen = false;
         }
 
@@ -710,7 +711,7 @@ void setObstacles(JSONNode bariers)
         forgetObstacles();
 		Loading.setLastLevelId(levelId);
         nextLevel = levelId + 1;
-        if (nextLevel == 4) { nextLevel = 0; }
+        if (nextLevel == numOfLevels) { nextLevel = 0; }
 		setObstacles(Loading.GetBariers(levelId));
         setPictures(Loading.GetPictures(levelId));
         SpawnFood();
