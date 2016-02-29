@@ -181,13 +181,22 @@ public class AddPortal : MonoBehaviour {
             if ((int)por.InputPortalGO.transform.position.x == x && (int)por.InputPortalGO.transform.position.y == y) return false;
         }catch(MissingReferenceException) {
         }
+        List<Tuple> toRemove = new List<Tuple>();
         foreach (Tuple portal in portals) {
             try
             {
                 if ((int)portal.inputPortal.InputPortalGO.transform.position.x == x && (int)portal.inputPortal.InputPortalGO.transform.position.y == y) return false;
                 if ((int)portal.outputPortal.getOutputPortal().transform.position.x == x && (int)portal.outputPortal.getOutputPortal().transform.position.y == y) return false;
             }
-            catch (MissingReferenceException e) { }
+            catch (MissingReferenceException e) {
+                 
+                toRemove.Add(portal); 
+            }
+        }
+        if (toRemove.Count > 1) {
+            foreach (Tuple portal in toRemove) {
+                portals.Remove(portal);
+            }
         }
         return true;
     }

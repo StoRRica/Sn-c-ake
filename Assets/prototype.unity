@@ -5107,7 +5107,7 @@ MonoBehaviour:
   fromPortalBobyPieceGO: {fileID: 195062, guid: f293ee30e57a19d4a821fc7a276cbc8b,
     type: 2}
   toPortalBobyPieceGO: {fileID: 195062, guid: f293ee30e57a19d4a821fc7a276cbc8b, type: 2}
-  desiredLengthOfSnake: 3
+  desiredLengthOfSnake: 6
 --- !u!50 &1362592743
 Rigidbody2D:
   serializedVersion: 2

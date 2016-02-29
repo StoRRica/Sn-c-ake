@@ -127,11 +127,7 @@ public class Snake : MonoBehaviour
             }*/
         }
         forgetObstacles();
-		setObstacles(Loading.GetBariers(Loading.getLastLevelId()));
-        setPictures(Loading.GetPictures(Loading.getLastLevelId()));
-        nextLevel = Loading.getLastLevelId() + 1;
-        if (nextLevel == numOfLevels) { nextLevel = 0; }
-        tail.Add(initialBody.transform);
+	    tail.Add(initialBody.transform);
         tail.Add(initialTail.transform);
         initialBodyRotation = initialBody.transform.rotation;
         initialBodyPosition = initialBody.transform.position;
@@ -557,7 +553,7 @@ public class Snake : MonoBehaviour
     }
 
     void OpenFinalPortal() {
-        Vector2 position = new Vector2(1,1);
+        Vector2 position = new Vector2(-17,-11);
         finalPortalGO = (GameObject) Instantiate(finalPOrtalGameObject, position, Quaternion.identity);
     }
 
