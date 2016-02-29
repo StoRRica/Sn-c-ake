@@ -307,6 +307,7 @@ public class Snake : MonoBehaviour
             Loading.unlockLevel(nextLevel);
             SetLevel(nextLevel);    
             finalPortalOpen = false;
+            UpdateSpeed(true);
         }
 
 
@@ -702,7 +703,13 @@ void setObstacles(JSONNode bariers)
     public void SetLevel(int levelId)
 	{
         Destroy(finalPortalGO);
-        Destroy(foodGO);
+        if (isSpecialOnTable) {
+            removeSpecialFood();
+        }
+        else
+        {
+            Destroy(foodGO);
+        }
         forgetObstacles();
 		Loading.setLastLevelId(levelId);
         nextLevel = levelId + 1;

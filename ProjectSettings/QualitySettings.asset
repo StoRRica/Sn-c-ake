@@ -31,7 +31,12 @@ QualitySettings:
     particleRaycastBudget: 4
     asyncUploadTimeSlice: 2
     asyncUploadBufferSize: 4
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - WebGL
+    - iPhone
+    - Android
+    - Standalone
+    - Web
   - serializedVersion: 2
     name: Fast
     pixelLightCount: 0
@@ -57,7 +62,12 @@ QualitySettings:
     particleRaycastBudget: 16
     asyncUploadTimeSlice: 2
     asyncUploadBufferSize: 4
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - WebGL
+    - Web
+    - Standalone
+    - iPhone
+    - Android
   - serializedVersion: 2
     name: Simple
     pixelLightCount: 1
@@ -83,7 +93,12 @@ QualitySettings:
     particleRaycastBudget: 64
     asyncUploadTimeSlice: 2
     asyncUploadBufferSize: 4
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - Web
+    - Standalone
+    - iPhone
+    - Android
+    - WebGL
   - serializedVersion: 2
     name: Good
     pixelLightCount: 2
@@ -135,7 +150,12 @@ QualitySettings:
     particleRaycastBudget: 1024
     asyncUploadTimeSlice: 2
     asyncUploadBufferSize: 4
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - WebGL
+    - Android
+    - iPhone
+    - Standalone
+    - Web
   - serializedVersion: 2
     name: Fantastic
     pixelLightCount: 4
@@ -161,5 +181,15 @@ QualitySettings:
     particleRaycastBudget: 4096
     asyncUploadTimeSlice: 2
     asyncUploadBufferSize: 4
-    excludedTargetPlatforms: []
-  m_PerPlatformDefaultQuality: {}
+    excludedTargetPlatforms:
+    - Web
+    - Standalone
+    - iPhone
+    - Android
+    - WebGL
+  m_PerPlatformDefaultQuality:
+    Android: 0
+    Standalone: 0
+    Web: 0
+    WebGL: 0
+    iPhone: 0
