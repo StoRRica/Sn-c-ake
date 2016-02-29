@@ -36,8 +36,7 @@ public class AddPortal : MonoBehaviour {
 
     void Start () {
         distance = 1.0f;
-        portalColor = new Color(Random.value, Random.value, Random.value, 1.0f); 
-
+        portalColor = new Color(Random.value, Random.value, Random.value, 1.0f);
     }
 	
 	// Update is called once per frame
@@ -175,9 +174,21 @@ public class AddPortal : MonoBehaviour {
            //hardcoded size of background
         int posY = 11-whichInRange((int)Mathf.Round(borderBottom.position.y), y, y1 / 12);
         int posX = whichInRange((int)Mathf.Round(borderLeft.position.x), x, x1 / 20);
-        Debug.Log(borderBottom.position.y+" y:"+posY);
+        //Debug.Log(borderBottom.position.y+" y:"+posY);
         if (SnakeScript.obstacle[posY][posX]) { return false; }
-
+        try {
+            if (por != null)
+            if ((int)por.InputPortalGO.transform.position.x == x && (int)por.InputPortalGO.transform.position.y == y) return false;
+        }catch(MissingReferenceException) {
+        }
+        foreach (Tuple portal in portals) {
+            try
+            {
+                if ((int)portal.inputPortal.InputPortalGO.transform.position.x == x && (int)portal.inputPortal.InputPortalGO.transform.position.y == y) return false;
+                if ((int)portal.outputPortal.getOutputPortal().transform.position.x == x && (int)portal.outputPortal.getOutputPortal().transform.position.y == y) return false;
+            }
+            catch (MissingReferenceException e) { }
+        }
         return true;
     }
 
