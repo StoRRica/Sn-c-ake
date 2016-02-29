@@ -52,7 +52,7 @@ public class AddPortal : MonoBehaviour {
         if (!pause)
         {
 
-            Debug.Log("pause" + pause);
+            //Debug.Log("pause" + pause);
             var v3 = Input.mousePosition;
             v3.z = distance;
             pos = Camera.main.ScreenToWorldPoint(v3);
@@ -73,7 +73,7 @@ public class AddPortal : MonoBehaviour {
                     //obj.GetComponent<Renderer>().material.mainTexture = inPortal;
                     obj.GetComponent<SpriteRenderer>().sprite = inPortal;
                     inPos = pos;
-                    Debug.Log("inPos: " + pos);
+                    //Debug.Log("inPos: " + pos);
 
                     PortalId idOfNewPortal = obj.GetComponent<PortalId>();
                     idOfNewPortal.setId(id);
@@ -136,7 +136,7 @@ public class AddPortal : MonoBehaviour {
                     }
                 }
                 outPos = pos;
-                Debug.Log("Direction: " + vec);
+                //Debug.Log("Direction: " + vec);
                 mouseDown = false;          
                 OutputPortal localOutputPortal = new OutputPortal(id, vec);
                 localOutputPortal.setOutputPortal(currentOutputPortal);

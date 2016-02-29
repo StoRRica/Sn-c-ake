@@ -13,12 +13,12 @@ public class ClosePortal : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D coll)
     {
         List<AddPortal.Tuple> portals = AddPortalScript.portals;
-        Debug.Log("collision with: " + coll.name);
+        //Debug.Log("collision with: " + coll.name);
         if ((coll.name.StartsWith(outputPortal.name))) {
             
             PortalId something = coll.gameObject.GetComponent<PortalId>();
             int id = something.id;
-            Debug.Log("Collision portal id: " + id);
+           // Debug.Log("Collision portal id: " + id);
             AddPortal.Tuple onIndex = null;
             foreach (AddPortal.Tuple tup in portals)
             {

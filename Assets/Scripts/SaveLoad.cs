@@ -33,7 +33,8 @@ namespace SaveLoad
 				lastLevelId = 0;
 				unlockLevels = new bool[levels["levels"].Count];
 				unlockLevels[0] = true;
-				highscoreLevels = new int[levels["levels"].Count];
+                Debug.Log("Levels count = " + unlockLevels.Length);
+                highscoreLevels = new int[levels["levels"].Count];
 				highscoreLevels[0] = 0;
 
 				for (int i=1; i<levels["levels"].Count; i++)
@@ -106,6 +107,7 @@ namespace SaveLoad
 
 		public static void unlockLevel(int levelId)
 		{
+            Debug.Log("LEVEL ID = " + levelId);
 			unlockLevels [levelId] = true;
 		}
 

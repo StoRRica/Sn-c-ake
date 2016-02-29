@@ -2654,7 +2654,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1501991004}
-        m_MethodName: StartLevel
+        m_MethodName: StartLevelv2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5107,7 +5107,7 @@ MonoBehaviour:
   fromPortalBobyPieceGO: {fileID: 195062, guid: f293ee30e57a19d4a821fc7a276cbc8b,
     type: 2}
   toPortalBobyPieceGO: {fileID: 195062, guid: f293ee30e57a19d4a821fc7a276cbc8b, type: 2}
-  desiredLengthOfSnake: 7
+  desiredLengthOfSnake: 3
 --- !u!50 &1362592743
 Rigidbody2D:
   serializedVersion: 2

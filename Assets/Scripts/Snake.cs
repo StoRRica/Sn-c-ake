@@ -307,10 +307,9 @@ public class Snake : MonoBehaviour
         } 
         else if (coll.name.StartsWith(finalPOrtalGameObject.name)) {
             desiredLengthOfSnake += 6;
+            if (nextLevel <4)
             Loading.unlockLevel(nextLevel);
             SetLevel(nextLevel);    
-            nextLevel++;
-            if (nextLevel == numOfLevels) { nextLevel = 0; }
             finalPortalOpen = false;
         }
 
@@ -596,7 +595,7 @@ void setObstacles(JSONNode bariers)
             position.x =Mathf.Round( borderLeft.position.x + (x * xDist / numOfColls) +1);
             position.y =Mathf.Round( borderTop.position.y - (y * yDist / numOfRows) -1 );
             //obstaclesGO.Add((GameObject)Instantiate(obstaclePrefab, position, Quaternion.identity));
-			Debug.Log ("obstacle x: "+x + "y:" + y + "position: "+position);
+			//Debug.Log ("obstacle x: "+x + "y:" + y + "position: "+position);
 		}
 	}
 
