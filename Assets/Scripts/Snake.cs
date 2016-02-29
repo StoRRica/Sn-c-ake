@@ -77,7 +77,7 @@ public class Snake : MonoBehaviour
     private Quaternion initialBodyRotation;
     private Vector3 initialHeadPosition;
     private Quaternion initialHeadRotation;
-    private int numOfLevels = 4;
+    private int numOfLevels = 10;
 
     public bool[][] obstacle; //= new bool[numOfRows][]; /*12*20*/
                                                // Use this for initialization

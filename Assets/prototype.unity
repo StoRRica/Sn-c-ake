@@ -5075,7 +5075,7 @@ MonoBehaviour:
     type: 2}
   incraseSnakeSpeedFoodPrefab: {fileID: 156412, guid: 1a4f9ceaa14001147a5f2026c7ba67de,
     type: 2}
-  decreaseSnakeSpeedPrefab: {fileID: 104696, guid: 5fea1638cde7ecd4fb5ce6ac93aae403,
+  decreaseSnakeSpeedPrefab: {fileID: 104696, guid: 222cd94075f71b048892446771ed1d60,
     type: 2}
   background: {fileID: 1083547084}
   obstaclePrefab: {fileID: 194374, guid: 723d6ee4946b83747a9d45185938954b, type: 2}
