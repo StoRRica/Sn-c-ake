@@ -468,7 +468,7 @@ public class Snake : MonoBehaviour
             foodY = whichInRange((int)Mathf.Round(borderBottom.position.y), (int)Mathf.Round(pos.y), y / numOfRows);
             foodX = whichInRange((int)Mathf.Round(borderLeft.position.x), (int)Mathf.Round(pos.x), x / numOfColls);
             //Debug.Log("suradnice do pola prekazok x: " + foodX + " y: " + (numOfRows - foodY - 1));
-        } while (!(isSafeFoodPlant(foodX, numOfRows - foodY - 1)));
+        } while (!(isSafeFoodPlant(foodX, numOfRows - foodY - 1))||(hittingSnake(pos.x,pos.y)));
         // Debug.Log("Position food: " + pos);
         // Instantiate the food at (x, y)
         //need to shift the number
@@ -517,6 +517,16 @@ public class Snake : MonoBehaviour
             i++;
         }
         return i;
+    }
+
+    bool hittingSnake(float x, float y) {
+        
+        foreach (Transform snakePart in tail) {
+            if ((Mathf.Abs(snakePart.position.x - x) < 0.5)&&(Mathf.Abs(snakePart.position.y-y)<0.5)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /*in case there are obstacles on board, we need to check whether the food is not going to be planted in some corner, since the snake can't rotate it's head*/
