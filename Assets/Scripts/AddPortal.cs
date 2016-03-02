@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public class AddPortal : MonoBehaviour {
 
@@ -36,7 +37,7 @@ public class AddPortal : MonoBehaviour {
 
     void Start () {
         distance = 1.0f;
-        portalColor = new Color(Random.value, Random.value, Random.value, 1.0f);
+        portalColor = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value, 1.0f);
     }
 	
 	// Update is called once per frame
@@ -144,7 +145,7 @@ public class AddPortal : MonoBehaviour {
 
                 portals.Add(new Tuple(por, localOutputPortal));
                 id++;
-                portalColor = new Color(Random.value, Random.value, Random.value, 1.0f);
+                portalColor = new Color(UnityEngine.Random.value, UnityEngine.Random.value, UnityEngine.Random.value, 1.0f);
             }
         }
     }
@@ -179,6 +180,7 @@ public class AddPortal : MonoBehaviour {
         if (SnakeScript.obstacle[posY][posX]) { return false; }
         try {
             if (por != null)
+                if(por.InputPortalGO != null)
             if ((int)por.InputPortalGO.transform.position.x == x && (int)por.InputPortalGO.transform.position.y == y) return false;
         }catch(MissingReferenceException e) {
         }
@@ -194,7 +196,11 @@ public class AddPortal : MonoBehaviour {
                 if ((int)portal.inputPortal.InputPortalGO.transform.position.x == x && (int)portal.inputPortal.InputPortalGO.transform.position.y == y) return false;
                 if ((int)portal.outputPortal.getOutputPortal().transform.position.x == x && (int)portal.outputPortal.getOutputPortal().transform.position.y == y) return false;
             }
-            catch (MissingReferenceException e) {
+            catch (MissingReferenceException e)
+            {
+            }
+            catch (NullReferenceException e) {
+
             }
         }
         return true;
