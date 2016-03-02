@@ -242,6 +242,7 @@ public class Snake : MonoBehaviour
             int id = something.id;
             //Debug.Log("Collision portal id: " + id);
             AddPortal.Tuple onIndex = null;
+            Instantiate(toPortalBobyPieceGO, coll.gameObject.transform.position,transform.rotation );
             foreach (AddPortal.Tuple tup in portals)
             {
                 if (tup.outputPortal.getId() == id)
@@ -309,8 +310,10 @@ public class Snake : MonoBehaviour
             finalPortalOpen = false;
             UpdateSpeed(true);
         }
+        else if (coll.name.StartsWith(toPortalBobyPieceGO.name))
+        {
 
-
+        }
         else
         {
             Loading.setScore(Loading.getLastLevelId(), score);

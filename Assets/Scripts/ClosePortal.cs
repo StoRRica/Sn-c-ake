@@ -9,6 +9,7 @@ public class ClosePortal : MonoBehaviour {
     }
     public GameObject inputPortal;
     public GameObject outputPortal;
+    public GameObject portalPart;
 	
     void OnTriggerEnter2D(Collider2D coll)
     {
@@ -30,6 +31,10 @@ public class ClosePortal : MonoBehaviour {
             }
             Destroy(coll.gameObject);
             Destroy(onIndex.inputPortal.InputPortalGO);
+        }
+
+        if (coll.name.StartsWith(portalPart.name)) {
+            Destroy(coll.gameObject);
         }
         
     }
