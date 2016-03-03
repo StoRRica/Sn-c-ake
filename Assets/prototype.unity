@@ -696,6 +696,7 @@ MonoBehaviour:
   inputPortal: {fileID: 167338, guid: a44d217cbd4d3ad47bf52208693dc893, type: 2}
   outputPortal: {fileID: 116430, guid: 07f261664be922c4da39204794030479, type: 2}
   portalPart: {fileID: 134020, guid: c23e9653d686d6e4084ae71fc41a1ea5, type: 2}
+  SnakeScript: {fileID: 1362592742}
 --- !u!50 &193219219
 Rigidbody2D:
   serializedVersion: 2
@@ -3287,6 +3288,7 @@ MonoBehaviour:
   inputPortal: {fileID: 167338, guid: a44d217cbd4d3ad47bf52208693dc893, type: 2}
   outputPortal: {fileID: 116430, guid: 07f261664be922c4da39204794030479, type: 2}
   portalPart: {fileID: 134020, guid: c23e9653d686d6e4084ae71fc41a1ea5, type: 2}
+  SnakeScript: {fileID: 1362592742}
 --- !u!50 &805391555
 Rigidbody2D:
   serializedVersion: 2
@@ -5110,6 +5112,7 @@ MonoBehaviour:
     type: 2}
   toPortalBobyPieceGO: {fileID: 134020, guid: c23e9653d686d6e4084ae71fc41a1ea5, type: 2}
   desiredLengthOfSnake: 6
+  step: 0
 --- !u!50 &1362592743
 Rigidbody2D:
   serializedVersion: 2

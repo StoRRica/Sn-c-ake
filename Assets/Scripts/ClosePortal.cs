@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.VersionControl;
 
 public class ClosePortal : MonoBehaviour {
     public AddPortal AddPortalScript;

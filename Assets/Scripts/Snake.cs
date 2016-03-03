@@ -61,7 +61,6 @@ public class Snake : MonoBehaviour
     private float specialTime;
     public static int numOfRows = 12;
     public static int numOfColls = 20;
-    public bool step;
 
     private int score = 0;
     private static int foodScoreNormal = 10;
@@ -136,7 +135,7 @@ public class Snake : MonoBehaviour
         initialTailRotation = initialTail.transform.rotation;
         initialHeadPosition = transform.position;
         initialHeadRotation = transform.rotation;
-        SpawnFood();
+        //SpawnFood();
         ToggleAnimation(true);
 
         /*for (int xC = 0; xC < numOfRows; xC++)
