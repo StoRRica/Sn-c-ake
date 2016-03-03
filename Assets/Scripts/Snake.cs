@@ -61,6 +61,7 @@ public class Snake : MonoBehaviour
     private float specialTime;
     public static int numOfRows = 12;
     public static int numOfColls = 20;
+    public bool step;
 
     private int score = 0;
     private static int foodScoreNormal = 10;

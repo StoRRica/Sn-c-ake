@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.VersionControl;
+
 public class ClosePortal : MonoBehaviour {
     public AddPortal AddPortalScript;
 
@@ -10,7 +12,8 @@ public class ClosePortal : MonoBehaviour {
     public GameObject inputPortal;
     public GameObject outputPortal;
     public GameObject portalPart;
-	
+    public Snake SnakeScript;
+
     void OnTriggerEnter2D(Collider2D coll)
     {
         List<AddPortal.Tuple> portals = AddPortalScript.portals;
@@ -34,7 +37,8 @@ public class ClosePortal : MonoBehaviour {
         }
 
         if (coll.name.StartsWith(portalPart.name)) {
-            Destroy(coll.gameObject);
+         
+            Destroy(coll.gameObject,SnakeScript.moveTime );
         }
         
     }
