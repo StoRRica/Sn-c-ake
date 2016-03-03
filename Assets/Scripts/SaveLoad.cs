@@ -109,6 +109,7 @@ namespace SaveLoad
 		{
             Debug.Log("LEVEL ID = " + levelId);
 			unlockLevels [levelId] = true;
+            SaveGame();
 		}
 
 		public static int getLastLevelId()
@@ -127,6 +128,7 @@ namespace SaveLoad
 			{
 				highscoreLevels[i] = 0;
 			}
+            SaveGame();
 		}
 
 		private static bool Save()
