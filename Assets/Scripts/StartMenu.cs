@@ -16,12 +16,14 @@ public Canvas levelsCanvas;
     public Canvas uiCanvas;
     public Canvas gameOver;
     public Button playButton;
+    public Button continueButton;
+    public Text continueText;
     public Button exitButton;
     public Button controlsButton;
     public Button optionsButton;
     public Button aboutButton;
     public Button levelsButton;
-    public AudioSource[] audio;
+    public AudioSource[] audioSource;
     public Slider musicSlider;
     public Slider soundSlider;
 
@@ -53,12 +55,14 @@ levelsCanvas = levelsCanvas.GetComponent<Canvas>();
         uiCanvas = uiCanvas.GetComponent<Canvas>();
         gameOver = gameOver.GetComponent<Canvas>();
         playButton = playButton.GetComponent<Button>();
+        continueButton = continueButton.GetComponent<Button>();
+        continueText = continueText.GetComponent<Text>();
         exitButton = exitButton.GetComponent<Button>();
         controlsButton = controlsButton.GetComponent<Button>();
         optionsButton = optionsButton.GetComponent<Button>();
         aboutButton = aboutButton.GetComponent<Button>();
         levelsButton = levelsButton.GetComponent<Button>();
-        audio = GetComponents<AudioSource>();
+        audioSource = GetComponents<AudioSource>();
         musicSlider = musicSlider.GetComponent<Slider>();
         soundSlider = soundSlider.GetComponent<Slider>();
 
@@ -76,7 +80,8 @@ lock1 = lock1.GetComponent<Text>();
 		lock4 = lock4.GetComponent<Text>();
 		level4 = level4.GetComponent<Button>();
 
-
+        continueText.enabled = false;
+        continueButton.enabled = false;
         quitDialog.enabled = false;
         aboutCanvas.enabled = false;
         controlsCanvas.enabled = false;
@@ -139,6 +144,7 @@ Loading.SaveGame ();
 
     private void MenuButtonsEnamble(bool enable)
     {
+        continueButton.enabled = enable;
         playButton.enabled = enable;
         exitButton.enabled = enable;
         controlsButton.enabled = enable;
@@ -150,7 +156,7 @@ Loading.SaveGame ();
     public void OkSoundDialog()
     {
         optionsCanvas.enabled = false;
-        audio[0].volume = audio[1].volume = musicSlider.value;
+        audioSource[0].volume = audioSource[1].volume = musicSlider.value;
         snakeScript.eatSound.volume = soundSlider.value;
         MenuButtonsEnamble(true);
     }
@@ -188,8 +194,8 @@ public void ResetHighscore()
         snakeScript.setPause(snakeScript.isPaused());
         addPortalScript.setInMenu(false);
         addPortalScript.setPause(snakeScript.isPaused());
-        audio[0].Stop();
-        audio[1].Play();
+        audioSource[0].Stop();
+        audioSource[1].Play();
     }
 
     public void StartLevelv2() {
@@ -234,14 +240,14 @@ public void ResetHighscore()
 
     public void swithMusic()
     {
-        if (audio[0].isPlaying)
+        if (audioSource[0].isPlaying)
         {
-            audio[0].Stop();
-            audio[1].Play();
+            audioSource[0].Stop();
+            audioSource[1].Play();
         } else
         {
-            audio[0].Play();
-            audio[1].Stop();
+            audioSource[0].Play();
+            audioSource[1].Stop();
         }
     }
 
@@ -250,5 +256,21 @@ public void ResetHighscore()
     {
 		Loading.SaveGame();
         Application.Quit();
+    }
+
+    public static void Hidden(Button but, bool isHidden)
+    {
+        if (isHidden)
+        {
+            but.enabled = false;
+            but.GetComponentInChildren<CanvasRenderer>().SetAlpha(0);
+            but.GetComponentInChildren<Text>().color = Color.clear;
+        }
+        else
+        {
+            but.enabled = true;
+            but.GetComponentInChildren<CanvasRenderer>().SetAlpha(1);
+            but.GetComponentInChildren<Text>().color = Color.black;
+        }
     }
 }

@@ -8,7 +8,10 @@ public class UserInterface : MonoBehaviour {
     public Canvas menuCanvas;
     public Canvas uiCanvas;
     public Canvas gamePausedCanvas;
-    public Text playGame;
+    public Button playButton;
+    public Button continueButton;
+    public Text continueText;
+    public Text playText;
 
     public GameObject snakeObject;
     public Snake snakeScript;
@@ -23,7 +26,10 @@ public class UserInterface : MonoBehaviour {
         menuCanvas = menuCanvas.GetComponent<Canvas>();
         uiCanvas = uiCanvas.GetComponent<Canvas>();
         gamePausedCanvas = gamePausedCanvas.GetComponent<Canvas>();
-        playGame = playGame.GetComponent<Text>();
+        playButton = playButton.GetComponent<Button>();
+        continueButton = continueButton.GetComponent<Button>();
+        continueText = continueText.GetComponent<Text>();
+        playText = playText.GetComponent<Text>();
 
         snakeObject = GameObject.FindGameObjectWithTag("Snake");
         snakeScript = snakeObject.GetComponent<Snake>();
@@ -39,7 +45,10 @@ public class UserInterface : MonoBehaviour {
 
     public void ExitGame()
     {
-        playGame.text = "continue";
+        playButton.enabled = false;
+        continueButton.enabled = true;
+        continueText.enabled = true;
+        playText.enabled = false;
         startMenuScript.swithMusic();
 
         gamePausedCanvas.enabled = false;
